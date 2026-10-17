@@ -1,6 +1,12 @@
 ﻿venv/
+__pycache__/
+*.pyc
 *.pem
 *.key
 *.crt
 logs/*.log
 policies/risk_state.json
+policies/chain_state.json
+*.vmx
+*.vmdk
+*.7z
