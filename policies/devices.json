@@ -8,8 +8,9 @@
   "sensor-01": {
     "device_type": "sensor",
     "trust_score": 0.7,
-    "revoked": false,
-    "serial": "370201906693817987420029376488946486019291604124"
+    "revoked": true,
+    "serial": "370201906693817987420029376488946486019291604124",
+    "auto_revoked": true
   },
   "actuator-01": {
     "device_type": "actuator",

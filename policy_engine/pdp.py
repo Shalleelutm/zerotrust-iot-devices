@@ -17,14 +17,18 @@ def evaluate(device_id, resource, now_hour=None):
     if device is None:
         return False, "unknown device (not in registry / no verified identity)"
     if device.get("revoked"):
-        return False, "device certificate revoked (assume breach triggered)"
+        reason = "AUTO-CONTAINMENT: device certificate auto-revoked by self-healing engine (assume breach)" \
+            if device.get("auto_revoked") else "device certificate revoked (assume breach triggered)"
+        return False, reason
 
     if now_hour is None:
         now_hour = datetime.datetime.now().hour
 
-    effective_trust, anomaly, request_count = record_and_score(device_id, device["trust_score"])
+    effective_trust, anomaly, request_count, auto_revoked = record_and_score(device_id, device["trust_score"])
+    if auto_revoked:
+        return False, f"AUTO-CONTAINMENT: {request_count} requests/10s, repeated anomalies \u2014 device auto-revoked, no human intervention"
     if anomaly:
-        return False, f"ADAPTIVE RISK ENGINE: {request_count} requests in 10s window exceeds baseline — trust reduced to {effective_trust}, access denied (continuous verification)"
+        return False, f"ADAPTIVE RISK ENGINE: {request_count} requests in 10s window exceeds baseline \u2014 trust reduced to {effective_trust}, access denied (continuous verification)"
 
     for rule in policy["rules"]:
         if rule["resource"] == resource:
