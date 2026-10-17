@@ -1,0 +1,32 @@
+{
+  "gateway": {
+    "device_type": "gateway-admin",
+    "trust_score": 1.0,
+    "revoked": false,
+    "serial": "491035227955579886552418197817430046866922848169"
+  },
+  "sensor-01": {
+    "device_type": "sensor",
+    "trust_score": 0.7,
+    "revoked": false,
+    "serial": "370201906693817987420029376488946486019291604124"
+  },
+  "actuator-01": {
+    "device_type": "actuator",
+    "trust_score": 0.9,
+    "revoked": false,
+    "serial": "299165128618889857422613641982576923285865510837"
+  },
+  "sensor-lowtrust": {
+    "device_type": "sensor",
+    "trust_score": 0.3,
+    "revoked": false,
+    "serial": "270840695465269661396377795672251569130736952121"
+  },
+  "sensor-compromised": {
+    "device_type": "sensor",
+    "trust_score": 0.7,
+    "revoked": true,
+    "serial": "99588726360770179209372833893696745126617284730"
+  }
+}

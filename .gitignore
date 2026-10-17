@@ -1,0 +1,6 @@
+﻿venv/
+*.pem
+*.key
+*.crt
+logs/*.log
+policies/risk_state.json
